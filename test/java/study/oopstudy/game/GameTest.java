@@ -1,4 +1,4 @@
-package study.oopstudy.game;
+package study.oopstudy.racinggame;
 
 import org.junit.jupiter.api.Test;
 import study.oopstudy.player.Player;

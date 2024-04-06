@@ -1,7 +1,7 @@
 package study.oopstudy;
 
 
-import study.oopstudy.game.Game;
+import study.oopstudy.racinggame.Game;
 import study.oopstudy.player.Player;
 
 import java.util.Scanner;

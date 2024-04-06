@@ -1,4 +1,4 @@
-package study.oopstudy.game;
+package study.oopstudy.racinggame;
 
 import java.util.Scanner;
 

@@ -1,7 +1,7 @@
-package study.oopstudy.game;
+package study.oopstudy.racinggame;
 
-import study.oopstudy.game.gi.GameBroadCast;
-import study.oopstudy.game.gi.GameSetting;
+import study.oopstudy.racinggame.gi.GameBroadCast;
+import study.oopstudy.racinggame.gi.GameSetting;
 import study.oopstudy.player.Player;
 
 import java.util.ArrayList;

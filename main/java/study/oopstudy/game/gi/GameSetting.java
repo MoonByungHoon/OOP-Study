@@ -1,4 +1,4 @@
-package study.oopstudy.game.gi;
+package study.oopstudy.racinggame.gi;
 
 import study.oopstudy.player.Player;
 
