@@ -9,7 +9,11 @@
 
 ### 1. 우테코 자동차 경주 게임
 
-![image](https://github.com/MoonByungHoon/query_dsl/assets/106061341/3d5d2775-66e2-4caa-9e67-b1cbd2f1731d)
+#### 객체 관계도
+
+클래스 관점이 아닌 오로지 객체 관점에서만 바라보고 그들의 관계도를 그려보자.
+
+![img_1.png](img_1.png)
 
 #### 개발환경
 
