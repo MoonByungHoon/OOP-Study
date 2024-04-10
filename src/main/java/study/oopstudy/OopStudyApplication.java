@@ -10,6 +10,6 @@ public class OopStudyApplication {
 	public static void main(String[] args) {
 		Game game = new Game();
 
-		game.gameStart();
+		game.start();
 	}
 }

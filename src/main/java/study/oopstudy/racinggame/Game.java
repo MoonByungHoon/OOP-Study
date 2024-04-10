@@ -4,9 +4,9 @@ import study.oopstudy.racinggame.broadcast.BroadCaster;
 
 public class Game {
 
-  BroadCaster broadCaster = new BroadCaster();
+  private BroadCaster broadCaster = new BroadCaster();
 
-  public void gameStart() {
+  public void start() {
     broadCaster.broadCast();
   }
 }

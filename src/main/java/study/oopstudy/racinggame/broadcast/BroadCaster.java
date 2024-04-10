@@ -5,7 +5,6 @@ import study.oopstudy.racinggame.model.Player;
 
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.IntStream;
 
 public class BroadCaster {
   private static final int MIN_ROUND = 1;
@@ -16,30 +15,35 @@ public class BroadCaster {
           + "최대 경주 횟수는 10회 입니다."
           + System.lineSeparator()
           + "입력 : ";
-  private static final String ILLEGALARGUMENT_ROUND_MESSAGE = "잘못 입력하였습니다.";
-
-  private final Progress progress = new Progress();
-  private final Create create = new Create();
+  private static final String ILLEGALARGUMENT_ROUND_MESSAGE = "라운드 입력 범위를 벗어났습니다.";
+  private static final String CREATE_PLAYER_MESSAGE = "참가자 이름을 입력해주세요."
+          + System.lineSeparator()
+          + "다수가 참가할 경우 ,로 구분해주세요."
+          + System.lineSeparator()
+          + "입력 : ";
 
   public void broadCast() {
+    System.out.printf(CREATE_PLAYER_MESSAGE);
+    String playerNames = sc.next();
+    Create create = new Create(playerNames);
+    List<Player> players = create.getPlayers();
 
-    List<Player> players = create.createPlayer();
 
     System.out.printf(INPUT_ROUND_MESSAGE);
-
     int round = sc.nextInt();
 
     validateRound(round);
 
-    System.out.println("라운드별 진행 결과");
-
     for (int i = 0; i < round; i++) {
-      progress.gameProgress(players);
+      System.out.println("라운드 진행 결과");
+
+      Progress progress = new Progress(players);
 
       roundBroadCast(players);
+
+      if (round == (i + 1)) winnersBroadCast(progress.gameWinner(players));
     }
 
-    winnersBroadCast(progress.gameWinner(players));
   }
 
   private void roundBroadCast(List<Player> players) {
@@ -52,19 +56,23 @@ public class BroadCaster {
   }
 
   private void winnersBroadCast(List<String> winners) {
-    int count = 0;
+    int indexCount = 0;
+
+    System.out.println("우승자 발표");
 
     for (String name : winners) {
+      indexCount++;
+
       System.out.printf(name);
 
-      if (count == winners.size() - 1) {
-        break;
-      }
+      if (indexCount == winners.size()) break;
 
       System.out.printf(", ");
-
-      count++;
     }
+  }
+
+  private void isLastIndex() {
+
   }
 
   private void playerMovePrint(int move) {

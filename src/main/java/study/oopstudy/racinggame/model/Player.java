@@ -1,11 +1,14 @@
 package study.oopstudy.racinggame.model;
 
-import java.util.Arrays;
+import java.util.Random;
 
-public class Player{
+public class Player {
   private static final int MAX_NANE_LENGTH = 5;
   private static final String INVALID_NAME_LENGTH = "이름의 길이가 5보다 큽니다.";
   private static final String NOT_INPUT_NAME = "이름을 입력하지 않았습니다.";
+  private static final int MIN_NUM = 3;
+  private static final int MAX_NUM = 10;
+  private static final Random random = new Random();
 
   private String name;
   private int move;
@@ -28,6 +31,12 @@ public class Player{
     }
   }
 
+  public void move() {
+    if (random.nextInt(MAX_NUM) > MIN_NUM) {
+      move++;
+    }
+  }
+
   public boolean isMoveEquals(int move) {
     return this.move == move;
   }
@@ -38,9 +47,5 @@ public class Player{
 
   public int getMove() {
     return move;
-  }
-
-  public void addOneMove() {
-    this.move++;
   }
 }
