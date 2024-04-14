@@ -21,8 +21,8 @@ public class BroadCaster {
     players.forEach(player -> player.move());
 
     for (Player player : players) {
-      System.out.printf(player.getName() + " : ");
-      playerMovePrint(player.getMove());
+      System.out.printf(player.sendName() + " : ");
+      playerMovePrint(player.sendMove());
       System.out.println();
     }
   }
@@ -30,13 +30,13 @@ public class BroadCaster {
   private void winnerAward(List<Player> players) {
 
     int maxMove = players.stream()
-            .mapToInt(player -> player.getMove())
+            .mapToInt(player -> player.sendMove())
             .max()
             .orElse(0);
 
     List<String> winners = players.stream()
-            .filter(player -> player.getMove() == maxMove)
-            .map(Player::getName)
+            .filter(player -> player.sendMove() == maxMove)
+            .map(Player::sendName)
             .toList();
 
     System.out.println("우승자 발표");

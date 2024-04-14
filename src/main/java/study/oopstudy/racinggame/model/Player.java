@@ -37,15 +37,11 @@ public class Player {
     }
   }
 
-  public boolean isMoveEquals(int move) {
-    return this.move == move;
+  public String sendName() {
+    return this.name;
   }
 
-  public String getName() {
-    return name;
-  }
-
-  public int getMove() {
+  public int sendMove() {
     return move;
   }
 }
