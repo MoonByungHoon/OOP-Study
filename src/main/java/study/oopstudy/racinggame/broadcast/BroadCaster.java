@@ -71,10 +71,6 @@ public class BroadCaster {
     }
   }
 
-  private void isLastIndex() {
-
-  }
-
   private void playerMovePrint(int move) {
     for (int i = 0; i < move; i++) {
       System.out.printf("-");
