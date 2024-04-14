@@ -3,7 +3,6 @@ package study.oopstudy.racinggame.broadcast;
 import study.oopstudy.racinggame.model.Player;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class BroadCaster {
   public void broadCast(List<Player> players, final int round) {
@@ -21,30 +20,46 @@ public class BroadCaster {
     players.forEach(player -> player.move());
 
     for (Player player : players) {
-      System.out.printf(player.sendName() + " : ");
-      playerMovePrint(player.sendMove());
+      player.printfName();
+      System.out.printf(" : ");
+      player.printfMove();
       System.out.println();
     }
   }
 
   private void winnerAward(List<Player> players) {
 
-    int maxMove = players.stream()
-            .mapToInt(player -> player.sendMove())
-            .max()
-            .orElse(0);
+    int findMaxMove = 0;
 
-    List<String> winners = players.stream()
-            .filter(player -> player.sendMove() == maxMove)
-            .map(Player::sendName)
+    for (Player player : players) {
+      findMaxMove = player.compareMove(findMaxMove);
+    }
+
+    int maxMove = findMaxMove;
+
+    List<Player> listPlayer = players.stream()
+            .filter(player -> player.equalsMove(maxMove))
             .toList();
 
-    System.out.println("우승자 발표");
+    for (Player player : listPlayer) {
 
-    String result = winners.stream()
-            .collect(Collectors.joining(", "));
+      player.printfName();
 
-    System.out.println(result);
+      if (listPlayer.indexOf(player) < listPlayer.size() - 1) {
+        System.out.printf(", ");
+      }
+    }
+//    List<String> winners = players.stream()
+//            .filter(player -> player.equals(maxMove))
+//            .map(Player::toPassName)
+//            .toList();
+//
+//    System.out.println("우승자 발표");
+//
+//    String result = winners.stream()
+//            .collect(Collectors.joining(", "));
+//
+//    System.out.println(result);
   }
 
   private void playerMovePrint(int move) {

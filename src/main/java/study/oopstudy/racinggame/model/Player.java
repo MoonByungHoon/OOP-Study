@@ -37,11 +37,27 @@ public class Player {
     }
   }
 
-  public String sendName() {
-    return this.name;
+  public void printfName() {
+    System.out.printf(this.name);
   }
 
-  public int sendMove() {
+  public void printfMove() {
+    for (int i = 0; i < this.move; i++) {
+      System.out.printf("-");
+    }
+  }
+
+  public int compareMove(int move) {
+    if (this.move > move) return this.move;
+
     return move;
+  }
+
+  public boolean equalsMove(int move) {
+    if (this.move == move) {
+      return true;
+    }
+
+    return false;
   }
 }
