@@ -42,7 +42,6 @@ public class BroadCaster {
             .toList();
 
     for (Player player : listPlayer) {
-
       player.printfName();
 
       if (listPlayer.indexOf(player) < listPlayer.size() - 1) {
