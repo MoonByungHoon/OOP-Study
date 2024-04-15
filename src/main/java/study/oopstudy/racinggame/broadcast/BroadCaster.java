@@ -12,7 +12,9 @@ public class BroadCaster {
 
       roundBroadCast(players);
 
-      if (round == (i + 1)) winnerAward(players);
+      if (round == (i + 1)) {
+        winnerAward(players);
+      }
     }
   }
 
