@@ -60,12 +60,4 @@ public class BroadCaster {
 //
 //    System.out.println(result);
   }
-
-  private void playerMovePrint(int move) {
-    for (int i = 0; i < move; i++) {
-      System.out.printf("-");
-    }
-
-    System.out.println();
-  }
 }
