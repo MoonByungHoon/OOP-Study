@@ -1,6 +1,8 @@
 package study.oopstudy.racinggame.model;
 
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Player {
   private static final int MAX_NANE_LENGTH = 5;
@@ -10,8 +12,11 @@ public class Player {
   private static final int MAX_NUM = 10;
   private static final Random random = new Random();
 
-  private final String name;
+  private String name;
   private int move;
+
+  public Player() {
+  }
 
   public Player(String name) {
     validateName(name);
@@ -48,19 +53,36 @@ public class Player {
     System.out.println();
   }
 
-  public void showName() {
-    System.out.printf(this.name);
-  }
-
-  public int compareMove(int move) {
-    if (this.move > move) {
-      return this.move;
-    }
-
-    return move;
-  }
+//  public void showName() {
+//    System.out.printf(this.name);
+//  }
+//
+//  public int compareMove(int move) {
+//    if (this.move > move) {
+//      return this.move;
+//    }
+//
+//    return move;
+//  }
 
   public boolean equalsMove(int move) {
     return this.move == move;
+  }
+
+  public int findMaxMove(List<Player> players) {
+    return players.stream()
+            .mapToInt(player -> player.move)
+            .max()
+            .orElse(0);
+  }
+
+  public void showWinner(List<Player> players, int maxMove) {
+    String winners = players.stream()
+            .filter(player -> player.equalsMove(maxMove))
+            .map(player -> player.name)
+            .collect(Collectors.joining(", "));
+
+    System.out.println("우승자 발표");
+    System.out.println(winners);
   }
 }
