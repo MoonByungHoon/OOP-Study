@@ -10,7 +10,7 @@ public class Player {
   private static final int MAX_NUM = 10;
   private static final Random random = new Random();
 
-  private String name;
+  private final String name;
   private int move;
 
   public Player(String name) {
@@ -25,7 +25,7 @@ public class Player {
       throw new IllegalArgumentException(NOT_INPUT_NAME);
     }
 
-    // 5자가 안넘는지 검증
+    // 5자가 넘는지 검증
     if (name.length() > MAX_NANE_LENGTH) {
       throw new IllegalArgumentException(INVALID_NAME_LENGTH);
     }
@@ -37,27 +37,30 @@ public class Player {
     }
   }
 
-  public void printfName() {
+  public void showData() {
     System.out.printf(this.name);
-  }
+    System.out.printf(" : ");
 
-  public void printfMove() {
     for (int i = 0; i < this.move; i++) {
       System.out.printf("-");
     }
+
+    System.out.println();
+  }
+
+  public void showName() {
+    System.out.printf(this.name);
   }
 
   public int compareMove(int move) {
-    if (this.move > move) return this.move;
+    if (this.move > move) {
+      return this.move;
+    }
 
     return move;
   }
 
   public boolean equalsMove(int move) {
-    if (this.move == move) {
-      return true;
-    }
-
-    return false;
+    return this.move == move;
   }
 }

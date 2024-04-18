@@ -8,24 +8,19 @@ public class BroadCaster {
   public void broadCast(List<Player> players, final int round) {
 
     for (int i = 0; i < round; i++) {
-      System.out.println("라운드 진행 결과");
-
-      roundBroadCast(players);
-
-      if (round == (i + 1)) {
-        winnerAward(players);
-      }
+      showInformation(players);
     }
+
+    winnerAward(players);
   }
 
-  private void roundBroadCast(List<Player> players) {
+  private void showInformation(List<Player> players) {
     players.forEach(player -> player.move());
 
+    System.out.println("라운드 진행 결과");
+
     for (Player player : players) {
-      player.printfName();
-      System.out.printf(" : ");
-      player.printfMove();
-      System.out.println();
+      player.showData();
     }
   }
 
@@ -43,8 +38,9 @@ public class BroadCaster {
             .filter(player -> player.equalsMove(maxMove))
             .toList();
 
+
     for (Player player : listPlayer) {
-      player.printfName();
+      player.showName();
 
       if (listPlayer.indexOf(player) < listPlayer.size() - 1) {
         System.out.printf(", ");
