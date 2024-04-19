@@ -1,24 +1,26 @@
 package study.oopstudy.racinggame.broadcast;
 
-import study.oopstudy.racinggame.model.Player;
-
-import java.util.List;
+import study.oopstudy.racinggame.model.Players;
 
 public class BroadCaster {
-  public void broadCast(List<Player> players, final int round) {
+  private final Players players;
 
-    for (int i = 0; i < round; i++) {
-      showInformation(players);
-    }
-
-    Player.showWinner(players);
+  public BroadCaster(Players players) {
+    this.players = players;
   }
 
-  private void showInformation(List<Player> players) {
-    players.forEach(player -> player.move());
+  public void start(final int round) {
+    for (int i = 0; i < round; i++) {
+      run();
+    }
 
+    System.out.println("우승자 발표");
+    System.out.println(players.getWinners());
+  }
+
+  private void run() {
+    players.move();
     System.out.println("라운드 진행 결과");
-
-    players.forEach(player -> player.showData());
+    players.location();
   }
 }

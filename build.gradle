@@ -1,5 +1,5 @@
 plugins {
-	id 'java'
+  id 'java'
 }
 
 group = 'study'
@@ -11,12 +11,14 @@ configurations {
 }
 
 repositories {
-	mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
+  testImplementation 'org.junit.jupiter:junit-jupiter:5.7.2'
+  testImplementation 'org.junit.jupiter:junit-jupiter-engine'
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+  useJUnitPlatform()
 }

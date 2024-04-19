@@ -1,22 +1,14 @@
 package study.oopstudy.racinggame.model;
 
-import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
-
-public class Player {
+class Player {
   private static final int MAX_NANE_LENGTH = 5;
+  private static final int MOVE_BOUNDARY = 3;
+
   private static final String INVALID_NAME_LENGTH = "이름의 길이가 5보다 큽니다.";
   private static final String NOT_INPUT_NAME = "이름을 입력하지 않았습니다.";
-  private static final int MIN_NUM = 3;
-  private static final int MAX_NUM = 10;
-  private static final Random random = new Random();
 
-  private String name;
+  private final String name;
   private int move;
-
-  public Player() {
-  }
 
   public Player(String name) {
     validateName(name);
@@ -37,8 +29,8 @@ public class Player {
   }
 
   public void move() {
-    if (random.nextInt(MAX_NUM) > MIN_NUM) {
-      move++;
+    if (RandomNumberGenerator.generate() > MOVE_BOUNDARY) {
+      this.move++;
     }
   }
 
@@ -53,22 +45,15 @@ public class Player {
     System.out.println();
   }
 
-  public boolean equalsMove(int move) {
+  public boolean is(int move) {
     return this.move == move;
   }
 
-  public static void showWinner(List<Player> players) {
-    int maxMove = players.stream()
-            .mapToInt(player -> player.move)
-            .max()
-            .orElse(0);
+  public String getName() {
+    return this.name;
+  }
 
-    String winners = players.stream()
-            .filter(player -> player.equalsMove(maxMove))
-            .map(player -> player.name)
-            .collect(Collectors.joining(", "));
-
-    System.out.println("우승자 발표");
-    System.out.println(winners);
+  public int getMove() {
+    return this.move;
   }
 }
