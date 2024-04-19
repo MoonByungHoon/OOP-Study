@@ -11,7 +11,7 @@ public class BroadCaster {
       showInformation(players);
     }
 
-    winnerAward(players);
+    Player.showWinner(players);
   }
 
   private void showInformation(List<Player> players) {
@@ -20,45 +20,5 @@ public class BroadCaster {
     System.out.println("라운드 진행 결과");
 
     players.forEach(player -> player.showData());
-  }
-
-  private void winnerAward(List<Player> players) {
-
-    int maxMove = Player.findMaxMove(players);
-
-    Player.showWinner(players, maxMove);
-
-//    int findMaxMove = 0;
-//
-//    for (Player player : players) {
-//      findMaxMove = player.compareMove(findMaxMove);
-//    }
-//
-//    int maxMove = findMaxMove;
-//
-//
-//    List<Player> listPlayer = players.stream()
-//            .filter(player -> player.equalsMove(maxMove))
-//            .toList();
-//
-//
-//    for (Player player : listPlayer) {
-//      player.showName();
-//
-//      if (listPlayer.indexOf(player) < listPlayer.size() - 1) {
-//        System.out.printf(", ");
-//      }
-//    }
-//    List<String> winners = players.stream()
-//            .filter(player -> player.equals(maxMove))
-//            .map(Player::toPassName)
-//            .toList();
-//
-//    System.out.println("우승자 발표");
-//
-//    String result = winners.stream()
-//            .collect(Collectors.joining(", "));
-//
-//    System.out.println(result);
   }
 }
