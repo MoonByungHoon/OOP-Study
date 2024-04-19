@@ -33,7 +33,7 @@ public class Player {
     }
   }
 
-  public static void move() {
+  public void move() {
     if (random.nextInt(MAX_NUM) > MIN_NUM) {
       move++;
     }
@@ -50,30 +50,16 @@ public class Player {
     System.out.println();
   }
 
-//  public void showName() {
-//    System.out.printf(this.name);
-//  }
-//
-//  public int compareMove(int move) {
-//    if (this.move > move) {
-//      return this.move;
-//    }
-//
-//    return move;
-//  }
-
   public boolean equalsMove(int move) {
     return this.move == move;
   }
 
-  public static int findMaxMove(List<Player> players) {
-    return players.stream()
+  public static void showWinner(List<Player> players) {
+    int maxMove = players.stream()
             .mapToInt(player -> player.move)
             .max()
             .orElse(0);
-  }
 
-  public static void showWinner(List<Player> players, int maxMove) {
     String winners = players.stream()
             .filter(player -> player.equalsMove(maxMove))
             .map(player -> player.name)
