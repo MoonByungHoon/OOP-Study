@@ -5,9 +5,6 @@ import study.oopstudy.racinggame.model.Player;
 import java.util.List;
 
 public class BroadCaster {
-
-  private final Player player = new Player();
-
   public void broadCast(List<Player> players, final int round) {
 
     for (int i = 0; i < round; i++) {
@@ -27,10 +24,9 @@ public class BroadCaster {
 
   private void winnerAward(List<Player> players) {
 
-    int maxMove = player.findMaxMove(players);
+    int maxMove = Player.findMaxMove(players);
 
-    player.showWinner(players, maxMove);
-
+    Player.showWinner(players, maxMove);
 
 //    int findMaxMove = 0;
 //

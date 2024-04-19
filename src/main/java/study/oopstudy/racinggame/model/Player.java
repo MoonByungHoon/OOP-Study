@@ -69,14 +69,14 @@ public class Player {
     return this.move == move;
   }
 
-  public int findMaxMove(List<Player> players) {
+  public static int findMaxMove(List<Player> players) {
     return players.stream()
             .mapToInt(player -> player.move)
             .max()
             .orElse(0);
   }
 
-  public void showWinner(List<Player> players, int maxMove) {
+  public static void showWinner(List<Player> players, int maxMove) {
     String winners = players.stream()
             .filter(player -> player.equalsMove(maxMove))
             .map(player -> player.name)
