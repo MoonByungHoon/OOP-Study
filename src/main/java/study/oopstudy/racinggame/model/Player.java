@@ -15,9 +15,6 @@ public class Player {
   private String name;
   private int move;
 
-  public Player() {
-  }
-
   public Player(String name) {
     validateName(name);
     this.name = name;
@@ -36,7 +33,7 @@ public class Player {
     }
   }
 
-  public void move() {
+  public static void move() {
     if (random.nextInt(MAX_NUM) > MIN_NUM) {
       move++;
     }
