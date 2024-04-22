@@ -13,6 +13,10 @@ public class Players {
             .toList();
   }
 
+  public List<Player> getPlayers() {
+    return players;
+  }
+
   public void move() {
     players.forEach(Player::move);
   }
