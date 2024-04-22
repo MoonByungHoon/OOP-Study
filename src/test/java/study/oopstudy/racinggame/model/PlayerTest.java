@@ -27,7 +27,7 @@ class PlayerTest {
     //    when
     //    then
     assertThrows(IllegalArgumentException.class, () -> new Player(""))
-            .equals("이름을 입력하지 않았습니다.");
+            .getMessage().equals("이름을 입력하지 않았습니다.");
   }
 
   @Test
@@ -37,7 +37,7 @@ class PlayerTest {
     //    when
     //    then
     assertThrows(IllegalArgumentException.class, () -> new Player("다섯글자를넘김"))
-            .equals("이름의 길이가 5보다 큽니다.");
+            .getMessage().equals("이름의 길이가 5보다 큽니다.");
   }
 
   @Test
