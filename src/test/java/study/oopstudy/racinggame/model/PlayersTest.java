@@ -3,6 +3,9 @@ package study.oopstudy.racinggame.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PlayersTest {
@@ -11,13 +14,18 @@ class PlayersTest {
   @DisplayName("플레이어_생성_분할_확인")
   void 플레이어_생성_분할_확인() {
     //    given
-    String PlayerNames = "test1,test2,test3";
+    String playerNames = "test1,test2,test3";
+    List<Player> playerList = Arrays.stream(playerNames.split(","))
+            .map(Player::new)
+            .toList();
 
     //    when
-    Players players = new Players(PlayerNames);
+    Players players = new Players(playerNames);
+    Players testPlayers = new Players(playerList);
 
     //    then
-    assertEquals(players.getPlayers().size(), 3);
+
+    assertEquals(players, testPlayers);
   }
 
   @Test
