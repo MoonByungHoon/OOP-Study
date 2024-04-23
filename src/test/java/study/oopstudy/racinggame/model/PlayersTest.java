@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class PlayersTest {
 
   @Test
-  @DisplayName("플레이어_생성_분할_확인")
+  @DisplayName("players name split test")
   void 플레이어_생성_분할_확인() {
     //    given
     String playerNames = "test1,test2,test3";
@@ -24,12 +24,11 @@ class PlayersTest {
     Players testPlayers = new Players(playerList);
 
     //    then
-
     assertEquals(players, testPlayers);
   }
 
   @Test
-  @DisplayName("우승자_선정")
+  @DisplayName("players winners test")
   void 우승자_선정() {
     //    given
     String playerNames = "test1,test2,test3";
