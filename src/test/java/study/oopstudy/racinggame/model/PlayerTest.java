@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerTest {
   private static final String NAME_NOT_MATCH = "이름 입력이 잘못되었습니다.";
@@ -39,13 +38,16 @@ class PlayerTest {
   void 플레이어_move_변화_확인() {
     //    given
     Player player = new Player("test");
+    int beforeMove = player.getMove();
 
     //    when
-    while (player.getMove() == 0) {
+    while (player.getMove() == beforeMove) {
       player.move();
     }
 
+    int afterMove = player.getMove();
+
     //    then
-    assertEquals(player.getMove(), 1);
+    assertTrue(afterMove == beforeMove + 1);
   }
 }
