@@ -3,9 +3,7 @@ package study.oopstudy.racinggame.model;
 class Player {
   private static final int MAX_NANE_LENGTH = 5;
   private static final int MOVE_BOUNDARY = 3;
-
-  private static final String INVALID_NAME_LENGTH = "이름의 길이가 5보다 큽니다.";
-  private static final String NOT_INPUT_NAME = "이름을 입력하지 않았습니다.";
+  private static final String NAME_NOT_MATCH = "이름 입력이 잘못되었습니다.";
 
   private final String name;
   private int move;
@@ -19,12 +17,12 @@ class Player {
   private void validateName(String name) {
     // 빈값이 아닌지
     if (name.isEmpty()) {
-      throw new IllegalArgumentException(NOT_INPUT_NAME);
+      throw new IllegalArgumentException(NAME_NOT_MATCH);
     }
 
     // 5자가 넘는지 검증
     if (name.length() > MAX_NANE_LENGTH) {
-      throw new IllegalArgumentException(INVALID_NAME_LENGTH);
+      throw new IllegalArgumentException(NAME_NOT_MATCH);
     }
   }
 

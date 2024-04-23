@@ -2,11 +2,14 @@ package study.oopstudy.racinggame.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class PlayerTest {
+  private static final String NAME_NOT_MATCH = "이름 입력이 잘못되었습니다.";
 
   @Test
   @DisplayName("플레이어 정상 생성 확인")
@@ -20,24 +23,15 @@ class PlayerTest {
     assertEquals(player.getMove(), 0);
   }
 
-  @Test
-  @DisplayName("플레이어_생성_공백에러")
+  @ParameterizedTest
+  @ValueSource(strings = {"", "MaxOutLength"})
+  @DisplayName("플레이어 생성 에러에 대한 여러 테스트")
   void 플레이어_생성_공백에러() {
     //    given
     //    when
     //    then
     assertThrows(IllegalArgumentException.class, () -> new Player(""))
-            .getMessage().equals("이름을 입력하지 않았습니다.");
-  }
-
-  @Test
-  @DisplayName("플레이어_생성_이름_길이_초과에러")
-  void 플레이어_생성_이름_길이_초과에러() {
-    //    given
-    //    when
-    //    then
-    assertThrows(IllegalArgumentException.class, () -> new Player("다섯글자를넘김"))
-            .getMessage().equals("이름의 길이가 5보다 큽니다.");
+            .getMessage().equals(NAME_NOT_MATCH);
   }
 
   @Test
