@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -32,13 +33,28 @@ class PlayersTest {
   void 우승자_선정() {
     //    given
     String playerNames = "test1,test2,test3";
+    Players firstPlayers = new Players(playerNames);
 
     //    when
-    Players players = new Players(playerNames);
-    String winners = players.getWinners();
+    String firstPlayersWinners = firstPlayers.getWinners();
+
+    List<Player> secondPlayers = Arrays.stream(playerNames.split(","))
+            .map(Player::new)
+            .toList();
+
+    int max = secondPlayers.stream()
+            .mapToInt(Player::getMove)
+            .max()
+            .orElse(0);
+
+    String secondPlayersWinners = secondPlayers.stream()
+            .filter(player -> player.is(max))
+            .map(Player::getName)
+            .collect(Collectors.joining(","));
 
     //    then
-    assertEquals(winners.length(), 17);
-    assertEquals(winners, playerNames);
+    assertEquals(firstPlayersWinners.length(), 17);
+    assertEquals(firstPlayersWinners, playerNames);
+    assertEquals(firstPlayersWinners, secondPlayersWinners);
   }
 }
