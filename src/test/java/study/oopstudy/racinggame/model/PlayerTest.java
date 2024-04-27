@@ -30,11 +30,11 @@ class PlayerTest {
   @ParameterizedTest
   @ValueSource(strings = {"", "MaxOutLength"})
   @DisplayName("player create errors test")
-  void 플레이어_생성_에러() {
+  void 플레이어_생성_에러(String name) {
     //    given
     //    when
     //    then
-    assertThrows(IllegalArgumentException.class, () -> new Player(""))
+    assertThrows(IllegalArgumentException.class, () -> new Player(name))
             .getMessage().equals(NAME_NOT_MATCH);
   }
 
