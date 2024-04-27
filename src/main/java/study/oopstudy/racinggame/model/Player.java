@@ -9,11 +9,18 @@ class Player {
 
   private final String name;
   private int move;
+  private Random random;
 
   public Player(String name) {
     validateName(name);
     this.name = name;
     this.move = 0;
+    this.random = new RandomGenerator();
+  }
+
+  public Player(String name, Random random) {
+    this.name = name;
+    this.random = random;
   }
 
   private void validateName(String name) {
@@ -29,7 +36,7 @@ class Player {
   }
 
   public void move() {
-    if (RandomNumberGenerator.generate() > MOVE_BOUNDARY) {
+    if (random.generate() > MOVE_BOUNDARY) {
       this.move++;
     }
   }

@@ -6,6 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class PlayerTest {
   private static final String NAME_NOT_MATCH = "이름 입력이 잘못되었습니다.";
@@ -40,15 +42,15 @@ class PlayerTest {
   @DisplayName("player move change test")
   void 플레이어_move_변화_확인() {
     //    given
-    Player player = new Player("test");
+    Random mockRandom = mock(Random.class);
+    Player player = new Player("test", mockRandom);
     int beforeMove = player.getMove();
 
     //    when
-    while (player.getMove() == beforeMove) {
-      player.move();
-    }
-
+    when(mockRandom.generate()).thenReturn(4);
+    player.move();
     int afterMove = player.getMove();
+    System.out.println(mockRandom.generate());
 
     //    then
     assertTrue(afterMove == beforeMove + 1);
