@@ -18,8 +18,11 @@ class PlayerTest {
 
 //    when
 //    then
-    assertEquals(player.getName(), "Test");
-    assertEquals(player.getMove(), 0);
+    assertAll(
+            () -> assertEquals(player.getName(), "Test"),
+            () -> assertEquals(player.getMove(), 0)
+    );
+
   }
 
   @ParameterizedTest

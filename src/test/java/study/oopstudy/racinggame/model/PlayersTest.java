@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PlayersTest {
@@ -53,8 +54,11 @@ class PlayersTest {
             .collect(Collectors.joining(","));
 
     //    then
-    assertEquals(firstPlayersWinners.length(), 17);
-    assertEquals(firstPlayersWinners, playerNames);
-    assertEquals(firstPlayersWinners, secondPlayersWinners);
+    assertAll(
+            () -> assertEquals(firstPlayersWinners.length(), 17),
+            () -> assertEquals(firstPlayersWinners, playerNames),
+            () -> assertEquals(firstPlayersWinners, secondPlayersWinners)
+    );
+
   }
 }
