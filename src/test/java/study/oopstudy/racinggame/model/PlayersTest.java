@@ -26,7 +26,7 @@ class PlayersTest {
     Players testPlayers = new Players(playerList);
 
     //    then
-    assertEquals(players, testPlayers);
+    assertEquals(players.getPlayers(), testPlayers.getPlayers());
   }
 
   @Test
