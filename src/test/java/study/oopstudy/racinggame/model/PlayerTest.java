@@ -50,7 +50,6 @@ class PlayerTest {
     when(mockRandom.generate()).thenReturn(4);
     player.move();
     int afterMove = player.getMove();
-    System.out.println(mockRandom.generate());
 
     //    then
     assertTrue(afterMove == beforeMove + 1);
