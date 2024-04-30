@@ -12,13 +12,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PlayersTest {
 
+  private final Random random = new RandomGenerator();
+
   @Test
   @DisplayName("players name split test")
   void 플레이어_생성_분할_확인() {
     //    given
     String playerNames = "test1,test2,test3";
     List<Player> playerList = Arrays.stream(playerNames.split(","))
-            .map(Player::new)
+            .map(name -> new Player(name, random))
             .toList();
 
     //    when
@@ -40,7 +42,7 @@ class PlayersTest {
     String firstPlayersWinners = firstPlayers.getWinners();
 
     List<Player> secondPlayers = Arrays.stream(playerNames.split(","))
-            .map(Player::new)
+            .map(name -> new Player(name, random))
             .toList();
 
     int max = secondPlayers.stream()

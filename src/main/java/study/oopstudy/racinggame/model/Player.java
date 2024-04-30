@@ -11,15 +11,10 @@ class Player {
   private int move;
   private Random random;
 
-  public Player(String name) {
+  public Player(String name, Random random) {
     validateName(name);
     this.name = name;
     this.move = 0;
-    this.random = new RandomGenerator();
-  }
-
-  public Player(String name, Random random) {
-    this.name = name;
     this.random = random;
   }
 

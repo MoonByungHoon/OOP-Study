@@ -11,12 +11,13 @@ import static org.mockito.Mockito.when;
 
 class PlayerTest {
   private static final String NAME_NOT_MATCH = "이름 입력이 잘못되었습니다.";
+  private final Random random = new RandomGenerator();
 
   @Test
   @DisplayName("player create test")
   void 플레이어_정상_생성() {
 //    given
-    Player player = new Player("Test");
+    Player player = new Player("Test", random);
 
 //    when
 //    then
@@ -34,7 +35,7 @@ class PlayerTest {
     //    given
     //    when
     //    then
-    assertThrows(IllegalArgumentException.class, () -> new Player(name))
+    assertThrows(IllegalArgumentException.class, () -> new Player(name, random))
             .getMessage().equals(NAME_NOT_MATCH);
   }
 

@@ -6,10 +6,12 @@ import java.util.stream.Collectors;
 
 public class Players {
   private final List<Player> players;
+  private final Random random;
 
   public Players(String playerInput) {
+    random = new RandomGenerator();
     this.players = Arrays.stream(playerInput.split(","))
-            .map(Player::new)
+            .map(name -> new Player(name, random))
             .toList();
   }
 
@@ -18,6 +20,7 @@ public class Players {
   }
 
   public Players(List<Player> players) {
+    random = new RandomGenerator();
     this.players = players;
   }
 
