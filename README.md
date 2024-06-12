@@ -8,7 +8,11 @@
 
 ### 1. 우테코 자동차 경주 게임
 
+개선 전 클래스 다이어그램
+
 ![image](https://github.com/MoonByungHoon/query_dsl/assets/106061341/3d5d2775-66e2-4caa-9e67-b1cbd2f1731d)
+
+
 
 #### 개발환경
 
